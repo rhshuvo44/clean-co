@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import NabvBar from "./Components/NabvBar";
+import NabvBar from "./Components/Shared/NabvBar";
 import { publicRoutes } from "./Rotues/publicRoutes";
 
 function App() {
