@@ -6,7 +6,7 @@ const NabvBar = ({ children }) => {
   useEffect(() => {
     themeChange(false);
     // 👆 false parameter is required for react project
-  }, [themeChange]);
+  }, []);
   return (
     <div className="drawer drawer-end">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
