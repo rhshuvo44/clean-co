@@ -5,7 +5,7 @@ const Estimate = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
   return (
-    <div className="bg-neutral w-full md:w-[70%] mx-auto p-10 relative mb-20 shadow-lg mt-[-30px] rounded z-20">
+    <div className="bg-base-100 w-full md:w-[70%] mx-auto p-10 relative mb-20 shadow-lg mt-[-30px] rounded z-20">
       <h2 className="text-5xl text-primary ">Get Free Estimate</h2>
       {/* Estimate from start  */}
       <form

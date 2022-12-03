@@ -72,7 +72,7 @@ const NabvBar = ({ children }) => {
                 </label>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 gap-2"
                 >
                   <li>
                     <NavLink to="/login" className="rounded-lg">
