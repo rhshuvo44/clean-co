@@ -1,12 +1,24 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { themeChange } from "theme-change";
+import auth from "../../firebase.init";
 
 const NabvBar = ({ children }) => {
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const logOut = () => {
+    signOut(auth);
+    navigate(from, { replace: true });
+  };
   useEffect(() => {
     themeChange(false);
     // 👆 false parameter is required for react project
   }, []);
+
   return (
     <div className="drawer drawer-end">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -43,6 +55,15 @@ const NabvBar = ({ children }) => {
                   Home
                 </NavLink>
               </li>
+
+              {user && (
+                <li>
+                  <NavLink to="/dashboard" className="rounded-lg">
+                    Dashboard
+                  </NavLink>
+                </li>
+              )}
+
               <li>
                 <NavLink to="/about" className="rounded-lg">
                   About
@@ -59,9 +80,15 @@ const NabvBar = ({ children }) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/login" className="rounded-lg">
-                  Login
-                </NavLink>
+                {user ? (
+                  <button onClick={logOut} className="rounded-lg">
+                    Logout
+                  </button>
+                ) : (
+                  <NavLink to="/login" className="rounded-lg">
+                    Login
+                  </NavLink>
+                )}
               </li>
               <li className="dropdown dropdown-hover dropdown-end">
                 <label
