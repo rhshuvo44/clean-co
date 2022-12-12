@@ -9,6 +9,7 @@ const NabvBar = ({ children }) => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const location = useLocation();
+  const { pathname } = useLocation();
   const from = location.state?.from?.pathname || "/";
   const logOut = () => {
     signOut(auth);
@@ -16,7 +17,6 @@ const NabvBar = ({ children }) => {
   };
   useEffect(() => {
     themeChange(false);
-    // 👆 false parameter is required for react project
   }, []);
 
   return (
@@ -25,6 +25,29 @@ const NabvBar = ({ children }) => {
       <div className="drawer-content flex flex-col">
         {/* <!-- Navbar --> */}
         <div className="w-full md:px-20 navbar bg-base-100 fixed top-0 z-50">
+          {pathname.includes("dashboard") && (
+            <label
+              tabIndex={0}
+              htmlFor="my-drawer-2"
+              className="btn btn-ghost lg:hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h7"
+                />
+              </svg>
+            </label>
+          )}
+
           <Link to="/" className="flex-1 px-2 mx-2 text-3xl font-bold">
             Clean Co.
           </Link>
@@ -115,7 +138,11 @@ const NabvBar = ({ children }) => {
               </li>
               <label className="swap swap-rotate">
                 {/* <!-- this hidden checkbox controls the state --> */}
-                <input type="checkbox" data-toggle-theme="dark,light" />
+                <input
+                  type="checkbox"
+                  data-toggle-theme="dark,light"
+                  data-act-class="ACTIVECLASS"
+                />
 
                 {/* <!-- sun icon --> */}
                 <svg
@@ -170,6 +197,7 @@ const NabvBar = ({ children }) => {
               Login
             </NavLink>
           </li>
+
           <li className="dropdown dropdown-hover dropdown-end">
             <label
               tabIndex={0}
@@ -195,10 +223,12 @@ const NabvBar = ({ children }) => {
           </li>
           <label className="swap swap-rotate mt-5">
             {/* <!-- this hidden checkbox controls the state --> */}
-            <input type="checkbox" data-toggle-theme="dark,light" />
+            <input type="checkbox" />
 
             {/* <!-- sun icon --> */}
             <svg
+              data-toggle-theme="light"
+              data-act-class="ACTIVECLASS"
               className="swap-on fill-current w-10 h-10"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -208,6 +238,8 @@ const NabvBar = ({ children }) => {
 
             {/* <!-- moon icon --> */}
             <svg
+              data-toggle-theme="dark"
+              data-act-class="ACTIVECLASS"
               className="swap-off fill-current w-10 h-10"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
