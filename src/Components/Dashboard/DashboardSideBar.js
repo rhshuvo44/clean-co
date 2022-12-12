@@ -1,27 +1,23 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-const DashboardSideBar = () => {
+const DashboardSideBar = ({ children }) => {
   return (
     <div className="drawer drawer-mobile mt-16 bg-accent max-h-screen">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* <!-- Page content here --> */}
-        <label
-          htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button lg:hidden"
-        >
-          Open drawer
-        </label>
+        {children}
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+        <ul className="menu p-4 gap-y-2 w-80 bg-base-100 text-base-content">
           {/* <!-- Sidebar content here --> */}
           <li>
-            <a>Sidebar Item 1</a>
+            <NavLink to="addServices" className="rounded-lg">  Add Services</NavLink>
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <NavLink to="addAdmin" className="rounded-lg"> Add Admin</NavLink>
           </li>
         </ul>
       </div>
