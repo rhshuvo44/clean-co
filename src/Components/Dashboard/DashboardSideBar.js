@@ -14,7 +14,10 @@ const DashboardSideBar = ({ children }) => {
         <ul className="menu p-4 gap-y-2 w-80 bg-base-100 text-base-content">
           {/* <!-- Sidebar content here --> */}
           <li>
-            <NavLink to="addServices" className="rounded-lg">  Add Services</NavLink>
+            <NavLink to="addServices" className="rounded-lg"> Add Services</NavLink>
+          </li>
+          <li>
+            <NavLink to="myServices" className="rounded-lg"> My Services</NavLink>
           </li>
           <li>
             <NavLink to="addAdmin" className="rounded-lg"> Add Admin</NavLink>
