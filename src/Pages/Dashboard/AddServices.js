@@ -1,13 +1,11 @@
 import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import servicesApi from "../../api/servicesApi";
 
 const AddServices = () => {
   const [imageUrl, setImageUrl] = useState("");
-  const { register, handleSubmit } = useForm();
-  // 84a5698c1163075e540df1dc6008c8cf  imgbb api key
+  const { register, handleSubmit, reset } = useForm();
   const uploadImage = (event) => {
     const image = event.target.files[0];
 
@@ -27,10 +25,10 @@ const AddServices = () => {
       ...data,
       image: imageUrl,
     };
-    console.log(services);
-    // axios
-    //   .servicesApi("/add-services", services)
-    //   .then((res) => console.log(res));
+    servicesApi.post("add-service", services).then((res) => {
+      reset();
+      setImageUrl("");
+    });
   };
 
   return (
