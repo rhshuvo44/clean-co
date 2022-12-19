@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import RequiredAdmin from "./Components/authentication/RequiredAdmin";
 import RequredAuth from "./Components/authentication/RequredAuth";
@@ -13,6 +15,7 @@ function App() {
   return (
     <>
       <NabvBar>
+        <ToastContainer />
         <Routes>
           {/* Public Routes  */}
           {publicRoutes.map(({ path, Component }, index) => (
