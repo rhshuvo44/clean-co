@@ -4,11 +4,11 @@ import DashboardSideBar from "../../Components/Dashboard/DashboardSideBar";
 
 const Dashboard = () => {
   return (
-    <div>
+    <>
       <DashboardSideBar>
         <Outlet />
       </DashboardSideBar>
-    </div>
+    </>
   );
 };
 

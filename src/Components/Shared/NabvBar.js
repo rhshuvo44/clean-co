@@ -81,7 +81,7 @@ const NabvBar = ({ children }) => {
 
               {user && (
                 <li>
-                  <NavLink to="/dashboard/addServices" className="rounded-lg">
+                  <NavLink to="/dashboard" className="rounded-lg">
                     Dashboard
                   </NavLink>
                 </li>

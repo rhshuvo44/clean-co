@@ -6,6 +6,7 @@ import RequiredAdmin from "./Components/authentication/RequiredAdmin";
 import RequredAuth from "./Components/authentication/RequredAuth";
 import NabvBar from "./Components/Shared/NabvBar";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyProfile from "./Pages/Dashboard/MyProfile";
 import { dashboardRoutes } from "./Rotues/dashboardRoutes";
 import { dashboardUserRoutes } from "./Rotues/dashboardUserRoutes";
 import { privateRoutes } from "./Rotues/privateRoutes";
@@ -28,6 +29,10 @@ function App() {
             ))}
 
             {/* dashboard  */}
+            {/* all user  */}
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route index element={<MyProfile />} />
+            </Route>
             {/* user  */}
             <Route path="/dashboard" element={<Dashboard />}>
               {dashboardUserRoutes.map(({ path, Component }, index) => (
